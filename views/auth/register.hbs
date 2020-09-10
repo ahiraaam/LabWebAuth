@@ -1,35 +1,55 @@
-<form class="form-signin">
+<form class="form-signin" method="POST" action="/register">
   <div class="text-center mb-4">
     <h1 class="h3 mb-3 font-weight-normal">Register</h1>
     <p>
       Template source:
-        <a href="https://getbootstrap.com/docs/4.0/examples/" target="_blank">
-          https://getbootstrap.com/docs/4.0/examples/
-        </a>
+      <a href="https://getbootstrap.com/docs/4.0/examples/" target="_blank">
+        https://getbootstrap.com/docs/4.0/examples/
+      </a>
     </p>
     <p>
       Already have an account? <a href="/login">Login</a>
     </p>
   </div>
-
+  {{#if errors.length}}
+  <div class="alert alert-danger">
+    Oops! the following errors were found:
+    <ul>
+      {{#each errors}}
+      <li>[{{param}}]: {{msg}}</li>
+      {{/each}}
+    </ul>
+  </div>
+  {{/if}}
   <div class="form-label-group">
-    <input type="email" id="inputName" class="form-control" placeholder="Name">
+    <input name="inputName" type="text" id="inputName" class="form-control" placeholder="Name">
     <label for="inputName">Name</label>
   </div>
 
   <div class="form-label-group">
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email address">
+    <input name="inputEmail" type="email" id="inputEmail" class="form-control" placeholder="Email address">
     <label for="inputEmail">Email address</label>
   </div>
 
   <div class="form-label-group">
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password">
+    <input name="inputPassword" type="password" id="inputPassword" class="form-control" placeholder="Password">
     <label for="inputPassword">Password</label>
   </div>
 
   <div class="form-label-group">
-    <input type="password" id="inputConfirmPassword" class="form-control" placeholder="Password">
+    <input name="confirm_password" type="password" id="inputConfirmPassword" class="form-control"
+      placeholder="Password">
     <label for="inputConfirmPassword">Confirm password</label>
+  </div>
+  <div>
+    <div class="form-group col-md-4">
+      <label for="inputRole">Role</label>
+      <select name="role" id="inputRole" class="form-control">
+        <option selected>Guest</option>
+        <option selected>Normal</option>
+        <option>Admin</option>
+      </select>
+    </div>
   </div>
 
   <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>

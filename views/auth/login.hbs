@@ -1,11 +1,11 @@
-<form class="form-signin">
+<form class="form-signin" method="POST" action="/login">
   <div class="text-center mb-4">
     <h1 class="h3 mb-3 font-weight-normal">Login</h1>
     <p>
       Template source:
-        <a href="https://getbootstrap.com/docs/4.0/examples/" target="_blank">
-          https://getbootstrap.com/docs/4.0/examples/
-        </a>
+      <a href="https://getbootstrap.com/docs/4.0/examples/" target="_blank">
+        https://getbootstrap.com/docs/4.0/examples/
+      </a>
     </p>
     <p>
       You don't have an account? <a href="/register">Register</a>
@@ -13,12 +13,14 @@
   </div>
 
   <div class="form-label-group">
-    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="" autocomplete="off">
+    <input name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required=""
+      autofocus="" autocomplete="off">
     <label for="inputEmail">Email address</label>
   </div>
 
   <div class="form-label-group">
-    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="" autocomplete="off">
+    <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required=""
+      autocomplete="off">
     <label for="inputPassword">Password</label>
   </div>
 
