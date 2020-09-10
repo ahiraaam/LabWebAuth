@@ -15,7 +15,7 @@ exports.checkNotAuthenticated = (req, res, next) => {
 
 exports.canViewUsers = (req, res, next) => {
   if (req.user.role != "Admin") {
-    return res.send("Not allowed");
+    return res.status(403).render();
   }
   next();
 };
@@ -24,7 +24,7 @@ exports.canViewDashboard = (req, res, next) => {
   if (req.user.role == "Admin" || req.user.role == "Normal") {
     next();
   } else {
-    res.status(401);
-    return res.send("NO PUEDES ENTRAR");
+    res.status(403);
+    return res.send("Not authorized");
   }
 };

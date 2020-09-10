@@ -8,8 +8,9 @@ exports.register = (req, res) => {
   res.render("auth/register", { layout: "auth", errors: req.flash("errors") });
 };
 
-exports.admin = (req, res) => {
-  res.render("admin/admin");
+exports.logout = (req, res) => {
+  req.logOut();
+  return res.redirect("/login");
 };
 
 exports.store = (req, res) => {

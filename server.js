@@ -8,6 +8,8 @@ let session = require("express-session");
 let flash = require("express-flash");
 let sessionStore = new session.MemoryStore();
 let passport = require("passport");
+let methodOverride = require("method-override");
+
 /**
  * Configurations
  */
@@ -27,6 +29,8 @@ let hbs = exphbs.create({
 });
 app.engine(extNameHbs, hbs.engine);
 app.set("view engine", extNameHbs);
+//Usar delete
+app.use(methodOverride("_method"));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());

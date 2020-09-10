@@ -1,0 +1,23 @@
+<h1>PAGINA DE ADMINISTRADOR</h1>
+
+{{#if users.length}}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Role</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each users}}
+        <tr>
+            <th scope="row">{{id}}</th>
+            <td>{{name}}</td>
+            <td>{{role}}</td>
+        </tr>
+        {{/each}}
+
+    </tbody>
+</table>
+{{/if}}
