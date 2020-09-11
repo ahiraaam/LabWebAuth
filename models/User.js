@@ -29,3 +29,7 @@ exports.create = (user) => {
 exports.getUsers = () => {
   return knex.select("*").from("users");
 };
+
+exports.getUser = (id) => {
+  return knex.select("*").from("users").where("id", id).first();
+};

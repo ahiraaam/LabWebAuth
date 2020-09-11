@@ -7,10 +7,11 @@ let passport = require("passport");
 const { session } = require("passport");
 let middleweare = require("../middleware/authentication");
 
-router.get("/", middleweare.checkAuthenticated, homepageController.index);
+router.get("/", homepageController.index);
 
 // Authentication routes
 router.get("/login", middleweare.checkNotAuthenticated, authController.login);
+
 router.get(
   "/register",
   middleweare.checkNotAuthenticated,
@@ -34,16 +35,27 @@ router.get(
   pagesController.dashboard
 );
 
+router.get(
+  "/user/:id",
+  middleweare.checkAuthenticated,
+  middleweare.canSeeProfile,
+  pagesController.getUser
+);
+
+router.get("*", function (req, res) {
+  res.status(404).send("PAGE NOT FOUND");
+});
+
 router.post(
   "/login",
   passport.authenticate("local", {
     failureRedirect: "/login-fail",
-    successRedirect: "/protected",
+    successRedirect: "/", //change it to go to login
   })
 );
 
 router.get("/protected", (req, res) => {
-  console.log(req.user);
+  //console.log(req.user);
   res.send("Usuario logueado con éxito");
 });
 
